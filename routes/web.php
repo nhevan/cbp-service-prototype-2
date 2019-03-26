@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/campaigns', 'CampaignController@index');
+Route::get('/campaigns/{campaignId}/presets', 'CampaignController@fetchPresets');

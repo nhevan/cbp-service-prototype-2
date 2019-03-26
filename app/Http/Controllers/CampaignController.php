@@ -21,6 +21,15 @@ class CampaignController extends Controller
 
     public function index()
     {
-        return response()->json($this->campaign->paginate(10));
+        $perPageLimit = $this->request->input('per_page', 5);
+
+        return response()->json($this->campaign->paginate($perPageLimit));
+    }
+
+    public function fetchPresets(int $campaignId)
+    {
+        $perPageLimit = $this->request->input('per_page', 5);
+
+        return response()->json($this->campaign->find($campaignId)->presets()->paginate($perPageLimit));
     }
 }
